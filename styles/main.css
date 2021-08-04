@@ -1,0 +1,18 @@
+body {
+    background: #ACADBC;
+}
+
+.navbar {
+    background-color: #00072D;
+    color: white;
+    justify-content: left;
+    padding: 10px 16px
+}
+
+.navbar-brand {
+    padding: 5px 20px
+}
+
+.page-container {
+    margin-top: 75px;
+}

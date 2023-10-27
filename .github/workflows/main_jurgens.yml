@@ -36,6 +36,7 @@ jobs:
       #     archiveFile: '$(Build.ArtifactStagingDirectory)/$(componentDirectory)-$(componentVersion).zip'
 
       - publish: $(System.DefaultWorkingDirectory)/bin/node-app
+        run: echo "Uploading artifacts"
 
       # - name: Upload artifact for deployment job
       #   uses: actions/upload-artifact@v3
@@ -52,6 +53,7 @@ jobs:
 
     steps:
       - download: current
+        run: echo "Downloading artifacts"
 
       # - name: Download artifact from build job
       #   uses: actions/download-artifact@v3

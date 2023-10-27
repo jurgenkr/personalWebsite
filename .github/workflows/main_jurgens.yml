@@ -35,16 +35,14 @@ jobs:
       #     archiveType: 'zip'
       #     archiveFile: '$(Build.ArtifactStagingDirectory)/$(componentDirectory)-$(componentVersion).zip'
 
-      - task: PublishPipelineArtifact@1
-        inputs:
-          targetPath: $(System.DefaultWorkingDirectory)/bin/node-app
-          artifactName: node-app
+      - publish: $(System.DefaultWorkingDirectory)/bin/node-app
+          artifact: node-app
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-          name: node-app
-          path: .
+      # - name: Upload artifact for deployment job
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: node-app
+      #     path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -54,10 +52,13 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: node-app
+      - download: current
+          artifact: node-app
+
+      # - name: Download artifact from build job
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: node-app
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2

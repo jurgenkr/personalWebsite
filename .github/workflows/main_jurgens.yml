@@ -36,7 +36,7 @@ jobs:
       #     archiveFile: '$(Build.ArtifactStagingDirectory)/$(componentDirectory)-$(componentVersion).zip'
 
       - name: PublishPipelineArtifact@1
-        inputs:
+        with:
           targetPath: $(System.DefaultWorkingDirectory)/bin/node-app
           artifactName: node-app
         run: echo "Uploading artifacts"
@@ -56,7 +56,7 @@ jobs:
 
     steps:
       - name: DownloadPipelineArtifact@2
-        inputs:
+        with:
           artifact: node-app
         run: echo "Downloading artifacts"
 

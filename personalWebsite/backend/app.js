@@ -2,7 +2,7 @@ const path = require('path');
 const express = require("express"); 
 const app = express(); 
 
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+app.use(express.static(path.resolve(__dirname, '../frontend/build')));
 
 app.get("/test", (req, res) => { 
   res.json({ message: "Hello from server!" });
@@ -12,7 +12,7 @@ app.get("/test", (req, res) => {
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
 });
   
 const PORT = process.env.PORT || 8080; 

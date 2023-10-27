@@ -35,7 +35,10 @@ jobs:
       #     archiveType: 'zip'
       #     archiveFile: '$(Build.ArtifactStagingDirectory)/$(componentDirectory)-$(componentVersion).zip'
 
-      - publish: $(System.DefaultWorkingDirectory)/bin/node-app
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: $(System.DefaultWorkingDirectory)/bin/node-app
+          artifactName: node-app
         run: echo "Uploading artifacts"
 
       # - name: Upload artifact for deployment job
@@ -52,7 +55,9 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - download: current
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifact: node-app
         run: echo "Downloading artifacts"
 
       # - name: Download artifact from build job

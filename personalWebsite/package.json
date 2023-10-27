@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "1.0.0", 
+ "description": "The NodeJS backend for my personal website.", 
+ "main": "app.js", 
+ "scripts": { 
+   "test": "echo \"Error: no test specified\" && exit 1", 
+   "start": "node backend/app.js", 
+   "dev": "nodemon backend/app.js",
+   "build": "cd frontend && npm install && npm run build" 
+ }, 
+ "engines": {
+    "node": "20.9.0"
+ },
+ "author": "Kati Jurgens", 
+ "license": "ISC", 
+ "dependencies": { 
+   "express": "^4.17.1" 
+ } 
+}

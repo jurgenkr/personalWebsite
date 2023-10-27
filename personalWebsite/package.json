@@ -6,7 +6,7 @@
  "scripts": { 
    "start": "node backend/app.js", 
    "dev": "nodemon backend/app.js",
-   "build": "cd frontend && npm install && npm run build" 
+   "build": "npm run start && cd frontend && npm install && npm run build" 
  }, 
  "engines": {
     "node": "20.*"
